@@ -1,44 +1,11 @@
 "use strict";
-class Key {
-    constructor() {
-        this.signature = Math.random();
-    }
-    getSignature() {
-        return this.signature;
-    }
+const button = document.querySelector("button");
+const input1 = document.getElementById("num1");
+const input2 = document.getElementById("num2");
+function add(num1, num2) {
+    return num1 + num2;
 }
-;
-class Person {
-    constructor(key) {
-        this.key = key;
-    }
-    getKey() {
-        return this.key;
-    }
-}
-class House {
-    constructor(key) {
-        this.key = key;
-        this.tenants = [];
-        this.door = false;
-    }
-    comeIn(name) {
-        if (this.door)
-            this.tenants.push(name);
-    }
-}
-class MyHouse extends House {
-    doorOpen(key) {
-        if (key.getSignature() !== this.key.getSignature()) {
-            console.log('Wrong key');
-        }
-        console.log('Open');
-        return this.door = true;
-    }
-}
-const key = new Key;
-const person = new Person(key);
-const house = new MyHouse(key);
-house.doorOpen(person.getKey());
-house.comeIn(person);
+button.addEventListener("click", function () {
+    console.log(add(+input1.value, +input2.value));
+});
 //# sourceMappingURL=app.js.map
